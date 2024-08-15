@@ -1,270 +1,48 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qi Zhang's personal website</title>
-    <style>
-        body { 
-            font-family: Arial, Helvetica, sans-serif; 
-            margin: 20px; 
-        }
-        .section { 
-            margin-bottom: 20px; 
-        }
-        .section-heading { 
-            font-size: 24px; 
-            margin-bottom: 10px; 
-            color: #333; 
-        }
-        .subsection-heading { 
-            font-size: 20px; 
-            margin-top: 15px; 
-            margin-bottom: 5px; 
-            color: #555; 
-        }
+# Resume
 
-        .list-item {
-            display: flex;
-            align-items: baseline;
-            margin-top: 5px; /* Adjust based on desired spacing between items */
-        }
-        .list-item strong {
-            flex: 0 0 auto; /* Do not grow or shrink */
-            width: 60px; /* Adjust based on the widest date element */
-            margin-right: 20px; /* Space between the date and the title */
-        }
+## Personal Information
 
-        .list-itemedu {
-            display: flex;
-            align-items: baseline;
-            margin-top: 5px; /* Adjust based on desired spacing between items */
-        }
-        .list-itemedu2 {
-            display: flex;
-            align-items: baseline;
-            margin-top: 0px; /* Adjust based on desired spacing between items */
-        }
-        .date {
-            flex: 0 0 auto; /* Do not grow or shrink */
-            width: 110px; /* Adjust based on the widest date element */
-            margin-right: 20px; /* Space between the date and the description */
-        }
-
-        /* 文章样式 */
-        .article-heading { margin: 0; font-size: 16px; margin-bottom: 5px; margin-top: 20px;}
-        .article-list { font-size: 14px; padding-left: 40px; margin-bottom: 3px; margin: 0; }
-        .article-title { font-size: 20px; padding-left: 0px; margin-bottom: 3px; }
-        .article-authors { font-size: 16px; padding-left: 0px; margin-bottom: 3px; }
-        .article-item { font-size: 14px; padding-left: 0px; margin-bottom: 3px; }
+- **Name:** Qi Zhang
+- **Email:** zhangqi94@iphy.ac.cn, zhangqi949494@gmail.com
 
 
-        /* 页眉样式 */
-        header {
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 2px 0;
-            font-size: 12px;
-        }
+## Academic & Education
 
-        /* 页脚样式 */
-        footer {
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 1px 0; 
-            font-size: 14px;
-        }
-    </style>
-
-    <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        let articleHeadings = document.querySelectorAll('.article-heading');
-        articleHeadings.forEach((heading, index) => {
-            let articleNumber = index + 1;
-            heading.innerHTML = `[${articleNumber}] ${heading.innerHTML}`;
-        });
-    });
-    </script>
-
-</head>
+- **Postdoctor**, Institute of Physics, Chinese Academy of Sciences, 2023-today
+- **Ph.D. in physics**, Department of Physics, Tsinghua University, 2017-2022
+- **B.S. in physics**, School of physics and technology, Wuhan University, 2013-2017
 
 
-<body>
+## Articles
 
-    <header>
-        <h1>Welcome to Qi Zhang's personal website!</h1>
-    </header>
-
-    <div class="section personal-info">
-        <h2 class="section-heading">Personal Information</h2>
-        <ul class="list">
-            <li class="list-item">
-                <strong>Name</strong> Qi Zhang
-            </li>
-            <li class="list-item">
-                <strong>DOB</strong> October, 1994
-            </li>
-            <li class="list-item">
-                <strong>Email</strong> 
-                <a href="mailto:zhangqi949494@gmail.com">zhangqi949494@gmail.com</a>,&nbsp;
-                <a href="mailto:zhangqi94@iphy.ac.cn">zhangqi94@iphy.ac.cn</a>,&nbsp;
-            </li>
-            <li class="list-item">
-                <strong>Github</strong> 
-                <a href="https://github.com/zhangqi94">https://github.com/zhangqi94</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="section academic-education">
-        <h2 class="section-heading">Academic & Education</h2>
-        <ul>
-            <li class="list-itemedu">
-                <span class="date">2023.5-Today</span> 
-                <strong>Postdoctor</strong>,
-                &nbsp; Institute of Physics, Chinese Academy of Sciences
-            </li>
-            <li class="list-itemedu2">
-                <span class="date"> </span> 
-                Supervisor: Prof. Lei Wang
-            </li>
-
-            <li class="list-itemedu">
-                <span class="date">2017.9-2022.6</span> 
-                <strong>Ph.D. in Physics</strong>,  
-                &nbsp; Department of Physics, Tsinghua University
-            </li>
-            <li class="list-itemedu2">
-                <span class="date"> </span> 
-                Supervisor: Prof. Guang-Ming Zhang
-            </li>
-
-            <li class="list-itemedu">
-                <span class="date">2013.9-2017.6</span> 
-                <strong>B.S. in Physics</strong>, 
-                &nbsp; School of Physics and Technology, Wuhan University
-            </li>
-        </ul>
-    </div>
-
-    <div class="section interests">
-        <h2 class="section-heading">Interests</h2>
-        <ul class="list">
-            <li class="list-item">
-                1. Machine learning and many-body physics
-            </li>
-            <li class="list-item">
-                2. Topological states and tensor networks
-            </li>
-            <li class="list-item">
-                3. Random quantum circuits and quantum computings
-            </li>
-        </ul>
-    </div>
-
-    <div class="section articles">
-        <h2 class="section-heading">Publications</h2>
-        <div class="article">
-
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2403.12518" target="_blank">arXiv: 2403.12518</a>
-                <!--[<a href="https://arxiv.org/pdf/2403.12518.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Solving vibrational Hamiltonians with neural canonical transformations</strong>
-                </ul>
-                <ul class="article-authors">
-                    Qi Zhang, Rui-Si Wang, Lei Wang 
-                </ul>
-                <ul class="article-item">
-                    Subjects: Chemical Physics (physics.chem-ph); Computational Physics (physics.comp-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: ~
-                </ul>
-                <ul class="article-item">
-                    Date: 19 March 2024
-                </ul>
-            </ul>
+### [1] Neural canonical transformations for vibrational spectra of molecules
+- **Author:** Qi Zhang, Rui-Si Wang, Lei Wang 
+- **Website:** https://arxiv.org/abs/2403.12518
+- **Subjects:** Chemical Physics (physics.chem-ph); Computational Physics (physics.comp-ph)
+- **Journal:** [J. Chem. Phys. 161, 024103 (2024)](https://doi.org/10.1063/5.0209255)
+- **Date:** Submitted: 20 March 2024; Accepted: 19 June 2024
 
 
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2203.07791" target="_blank">arXiv: 2203.07791</a>
-                <!--[<a href="https://arxiv.org/pdf/2203.07791.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Noisy induced entanglement transition in one-dimensional random quantum circuits</strong>
-                </ul>
-                <ul class="article-authors">
-                    Qi Zhang, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Quantum Physics (quant-ph); Disordered Systems and Neural Networks (cond-mat.dis-nn); Statistical Mechanics (cond-mat.stat-mech)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://cpl.iphy.ac.cn/10.1088/0256-307X/39/5/050302" target="_blank">Chinese Physical Letters 39, 050302 (2022)</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 4 March 2022; Accepted 2 April 2022; Published online 26 April 2022
-                </ul>
-            </ul>
-
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2005.03841" target="_blank">arXiv: 2005.03841</a>
-                <!--[<a href="https://arxiv.org/pdf/2005.03841.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Non-Hermitian effects of the intrinsic signs in topologically ordered wavefunctions</strong>
-                </ul>
-                <ul class="article-authors">
-                    Qi Zhang, Wen-Tao Xu, Zi-Qi Wang, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech); Quantum Physics (quant-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://doi.org/10.1038/s42005-020-00479-y" target="_blank">Commun Phys 3, 209 (2020)</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 20 July 2020; Accepted 21 October 2020; Published online 13 November 2020
-                </ul>
-            </ul>
+### [2] Noisy induced entanglement transition in one-dimensional random quantum circuits
+- **Author:** Qi Zhang, Guang-Ming Zhang
+- **Subjects:** Quantum Physics (quant-ph); Disordered Systems and Neural Networks (cond-mat.dis-nn); Statistical Mechanics (cond-mat.stat-mech)
+- **Website:** https://arxiv.org/abs/2203.07791
+- **Journal:** [Chinese Physical Letters 39, 050302 (2022)](https://cpl.iphy.ac.cn/10.1088/0256-307X/39/5/050302)
+- **Date:** Received 4 March 2022; Accepted 2 April 2022; Published online 26 April 2022
 
 
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/1912.07836" target="_blank">arXiv: 1912.07836</a>
-                <!--[<a href="https://arxiv.org/pdf/1912.07836.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Tensor network approach to phase transitions of a non-Abelian topological phase</strong>
-                </ul>
-                <ul class="article-authors">
-                    Wen-Tao Xu, Qi Zhang, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.124.130603" target="_blank">Phys. Rev. Lett. 124, 130603 (2020)</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 19 December 2019; Accepted 20 March 2020; Published 3 April 2020
-                </ul>
-            </ul>
-
-        </div>
-    </div>
+### [3] Non-Hermitian effects of the intrinsic signs in topologically ordered wavefunctions
+- **Author:** Qi Zhang, Wen-Tao Xu, Zi-Qi Wang, Guang-Ming Zhang
+- **Subjects:** Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech); Quantum Physics (quant-ph)
+- **Website:** https://arxiv.org/abs/2005.03841
+- **Journal:** [Commun Phys 3, 209 (2020)](https://doi.org/10.1038/s42005-020-00479-y)
+- **Date:** Received 20 July 2020; Accepted 21 October 2020; Published online 13 November 2020
 
 
-    <br><br><br> 
-    <footer>
-        <p>&copy; 2024 Qi Zhang. All rights reserved.</p>
-    </footer>
-</body>
-</html>
-
+### [4] Tensor network approach to phase transitions of a non-Abelian topological phase
+- **Author:** Wen-Tao Xu, Qi Zhang, Guang-Ming Zhang
+- **Subjects:** Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech)
+- **Website:** https://arxiv.org/abs/1912.07836
+- **Journal:** [Phys. Rev. Lett. 124, 130603 (2020)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.124.130603)
+- **Date:** Received 19 December 2019; Accepted 20 March 2020; Published 3 April 2020
