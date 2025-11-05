@@ -19,8 +19,8 @@
 - **Quantum Anharmonic Effects in Hydrogen-Bond Symmetrization of High-Pressure Ice**
 - Authors: **Qi Zhang**, Lei Wang
 - Subjects: Materials Science (cond-mat.mtrl-sci); Computational Physics (physics.comp-ph)
-- Journal: https://doi.org/10.48550/arXiv.2507.01452
-- DOI: https://doi.org/10.48550/arXiv.2507.01452
+- Journal: [Phys. Rev. B 112, 174106 (2025)](https://journals.aps.org/prb/abstract/10.1103/gsc3-1bz6)
+- DOI: https://doi.org/10.1103/gsc3-1bz6
 - Date: Received 5 July 2025; revised 16 September 2025; accepted 14 October 2025; published 4 November 2025
 - Repository: https://github.com/zhangqi94/watericex
 
@@ -28,7 +28,7 @@
 - **Neural Canonical Transformations for Quantum Anharmonic Solids of Lithium**
 - Authors: **Qi Zhang**, Xiaoyang Wang, Rong Shi, Xinguo Ren, Han Wang, Lei Wang
 - Subjects: Materials Science (cond-mat.mtrl-sci); Computational Physics (physics.comp-ph)
-- Journal: [Phys. Rev. Lett. 134, 246101](https://journals.aps.org/prl/abstract/10.1103/p3th-25bc)
+- Journal: [Phys. Rev. Lett. 134, 246101 (2025)](https://journals.aps.org/prl/abstract/10.1103/p3th-25bc)
 - DOI: https://doi.org/10.1103/p3th-25bc
 - Date: Received 26 December 2024; accepted 27 May 2025; published 20 June 2025
 - Repository: https://github.com/zhangqi94/lithium
