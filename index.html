@@ -1,476 +1,271 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qi Zhang's personal website</title>
-    <style>
-        body { 
-            font-family: Arial, Helvetica, sans-serif; 
-            margin: 20px; 
-        }
-        .section { 
-            margin-bottom: 20px; 
-        }
-        .section-heading { 
-            font-size: 24px; 
-            margin-bottom: 10px; 
-            color: #333; 
-        }
-        .subsection-heading { 
-            font-size: 20px; 
-            margin-top: 15px; 
-            margin-bottom: 5px; 
-            color: #555; 
+  <!-- ===== Meta / SEO ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Qi Zhang — Personal Website</title>
+  <meta name="description" content="Qi Zhang — Machine learning & many-body physics. Publications, activities, and contact." />
+  <link rel="canonical" href="https://your-domain.example/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Qi Zhang — Personal Website" />
+  <meta property="og:description" content="Machine learning & many-body physics. Publications, activities, and contact." />
+  <meta property="og:url" content="https://your-domain.example/" />
+  <meta property="og:image" content="https://your-domain.example/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Qi Zhang — Personal Website" />
+  <meta name="twitter:description" content="Machine learning & many-body physics. Publications, activities, and contact." />
+  <meta name="twitter:image" content="https://your-domain.example/og-image.jpg" />
+
+  <!-- Icons (替换为你自己的文件) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Qi Zhang",
+    "alternateName": "张琦",
+    "url": "https://your-domain.example/",
+    "sameAs": [
+      "https://github.com/zhangqi94",
+      "https://orcid.org/0000-0002-1243-344X",
+      "mailto:zhangqi949494@gmail.com",
+      "mailto:zhangqi94@iphy.ac.cn"
+    ],
+    "jobTitle": "Postdoctoral Researcher",
+    "affiliation": { "@type": "Organization", "name": "Institute of Physics, Chinese Academy of Sciences" }
+  }
+  </script>
+
+  <!-- ===== Styles ===== -->
+  <style>
+    :root{
+      --text: #222;
+      --muted: #666;
+      --bg-soft: #f5f5f5;
+      --link: #0a58ca;
+      --maxw: 860px;
+      --indent: 36px;        /* 从第二行起统一缩进（pub/act 通用） */
+      --title-size: 21px;    /* 每条记录的“文章/活动标题”字号（pub/act 一致） */
+      --body-size: 16px;     /* 正文字号（作者/信息/活动条目） */
+      --line: 1.35;          /* 稍微大一点的行距 */
+    }
+
+    /* 基础排版 */
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+    .container{ max-width: var(--maxw); margin: 24px auto 48px; padding: 0 16px; }
+
+    header, footer { text-align: center; background: var(--bg-soft); }
+    header{ padding: 10px 0; }
+    header h1{ margin: 0; font-size: 20px; font-weight: 600; }
+    footer{ padding: 8px 0; font-size: 14px; color: var(--muted); }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .section{ margin: 28px 0; }
+    .section-heading{ font-size: 24px; margin: 0 0 12px 0; color: #333; font-weight: 700; }
+
+    /* Personal Info / Education 行内对齐 */
+    .list{ margin: 0; padding-left: var(--indent); list-style: none; }
+    .list-item, .list-itemedu { display: flex; align-items: baseline; margin: 6px 0; }
+    .list-item strong{ width: 120px; margin-right: 16px; font-weight: 600; }
+    .list-itemedu2{ display: flex; align-items: baseline; margin: 2px 0 6px; }
+    .date{ width: 120px; margin-right: 16px; color: var(--muted); }
+
+    /* Interests：不要圆点，整体统一缩进（不是两列） */
+    .section.interests ul.list{ list-style: none; margin: 0; padding-left: var(--indent); }
+    .section.interests .list-interests,
+    .section.interests .list-interests-item{ margin: 4px 0; }
+    .section.interests .list-interests b{
+      font-weight: 600;
+      font-size: 18px; /* 增大 1 和 2 的行字号 */
+    }
+
+    /* Publications & Activities：共享风格（内容字号一致、行距一致、缩进一致） */
+    /* 去掉 bullets 与默认缩进 */
+    .records ul, .records li{ list-style: none; padding-left: 0; margin-left: 0; }
+
+    /* 每条记录的第 1 行（h3）：不缩进、作为编号行（arXiv 或活动名） */
+    .records h3.record-heading{
+      font-size: 16px;
+      font-weight: 600;
+      margin: 18px 0 4px 0;      /* 与标题间更紧凑 */
+      line-height: 1.25;
+    }
+
+    /* 从第 2 行起统一缩进：h3 紧邻的第一个 UL */
+    .records h3.record-heading + ul{ padding-left: var(--indent); }
+
+    /* 第二行（论文题目放大，仅用于 Publications） */
+    .section.articles .records h3.record-heading + ul > :is(ul,li):first-child,
+    #publications-md h3.record-heading + ul > :is(ul,li):first-child{
+      font-size: var(--title-size) !important;
+      font-weight: 600 !important;
+      margin: 0 0 4px 0 !important;
+      line-height: var(--line) !important;
+      padding-left: 0 !important;
+    }
+
+    /* 标题内部元素跟随放大 */
+    .section.articles .records h3.record-heading + ul > :is(ul,li):first-child *,
+    #publications-md h3.record-heading + ul > :is(ul,li):first-child *{
+      font-size: inherit !important;
+      font-weight: inherit !important;
+    }
+
+    /* Academic Activities：第二行不放大 */
+    #activities-md h3.record-heading + ul > :is(ul,li):first-child{
+      font-size: var(--body-size) !important;
+      font-weight: 400 !important;
+      margin: 0 0 4px 0 !important;
+      line-height: var(--line) !important;
+      padding-left: 0 !important;
+    }
+
+    /* 作者行 / 正文条目（Journal/DOI/Date/活动明细） */
+    .records .record-authors,
+    .records .record-item{
+      font-size: var(--body-size);
+      margin: 0 0 4px 0;
+      line-height: var(--line);
+    }
+
+    /* 加载/错误提示 */
+    .loading, .error { font-size: 14px; color: var(--muted); }
+    .error{ color: #b00; }
+  </style>
+
+  <!-- Markdown 渲染器 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+  <!-- 注入 publications.md / activities.md，自动编号、套样式 -->
+  <script defer>
+    async function loadMarkdown(mdPath, mountEl, postprocess) {
+      try {
+        const res = await fetch(mdPath + '?v=' + Date.now());
+        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+        const md = await res.text();
+        mountEl.innerHTML = marked.parse(md, { mangle: false, headerIds: false });
+        if (typeof postprocess === 'function') postprocess(mountEl);
+      } catch (err) {
+        mountEl.innerHTML = '<span class="error">Failed to load ' + mdPath + ': ' + String(err) + '</span>';
+      }
+    }
+
+    // 公共：给 h3 自动编号 + 添加类名（Pub/Act 通用）
+    // 公共：给 h3 自动编号 + 保留链接（Pub/Act 通用）
+    function enhanceRecords(root){
+        const hs = root.querySelectorAll('h3');
+        hs.forEach((h, i) => {
+
+        // 避免重复编号
+        if (!h.dataset.numbered) {
+            const span = document.createElement('span');
+            span.textContent = `[${i + 1}] `;
+            h.prepend(span);     // ✅ 不修改原来的 innerHTML，因此链接保留
+            h.dataset.numbered = "1";
         }
 
-        .list-item {
-            display: flex;
-            align-items: baseline;
-            margin-top: 5px; /* Adjust based on desired spacing between items */
-        }
-        .list-item strong {
-            flex: 0 0 auto; /* Do not grow or shrink */
-            width: 60px; /* Adjust based on the widest date element */
-            margin-right: 20px; /* Space between the date and the title */
-        }
-
-        .list-itemedu {
-            display: flex;
-            align-items: baseline;
-            margin-top: 5px; /* Adjust based on desired spacing between items */
-        }
-        .list-itemedu2 {
-            display: flex;
-            align-items: baseline;
-            margin-top: 0px; /* Adjust based on desired spacing between items */
-        }
-        .date {
-            flex: 0 0 auto; /* Do not grow or shrink */
-            width: 110px; /* Adjust based on the widest date element */
-            margin-right: 20px; /* Space between the date and the description */
-        }
-
-        .list-interests {
-            display: flex;
-            align-items: baseline;
-            margin-top: 5px; /* Adjust based on desired spacing between items */
-        }
-
-        .list-interests-item {
-            display: flex;
-            align-items: baseline;
-            margin-top: 0px; /* Adjust based on desired spacing between items */
-            padding-left: 40px;
-        }
-
-        /* 文章样式 */
-        .article-heading { margin: 0; font-size: 16px; margin-bottom: 5px; margin-top: 20px;}
-        .article-list { font-size: 14px; padding-left: 40px; margin-bottom: 3px; margin: 0; }
-        .article-title { font-size: 20px; padding-left: 0px; margin-bottom: 3px; }
-        .article-authors { font-size: 16px; padding-left: 0px; margin-bottom: 3px; }
-        .article-item { font-size: 14px; padding-left: 0px; margin-bottom: 3px; }
-
-
-        /* 页眉样式 */
-        header {
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 2px 0;
-            font-size: 12px;
-        }
-
-        /* 页脚样式 */
-        footer {
-            text-align: center;
-            background-color: #f0f0f0;
-            padding: 1px 0; 
-            font-size: 14px;
-        }
-    </style>
-
-    <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        let articleHeadings = document.querySelectorAll('.article-heading');
-        articleHeadings.forEach((heading, index) => {
-            let articleNumber = index + 1;
-            heading.innerHTML = `[${articleNumber}] ${heading.innerHTML}`;
+        h.classList.add('record-heading');
         });
-    });
-    </script>
 
+        root.classList.add('records');
+
+        // 作者 / 条目识别（与之前一致）
+        root.querySelectorAll('ul').forEach(ul => {
+        const txt = ul.textContent.trim().toLowerCase();
+        if ((/authors?:/.test(txt) || /,|\sand\s/.test(txt)) && !/^(journal:|doi:|date:|subjects:)/.test(txt)) {
+            ul.classList.add('record-authors');
+        }
+        if (/^(journal:|doi:|date:|subjects:)/.test(txt)) {
+            ul.classList.add('record-item');
+        }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const pubMount = document.getElementById('publications-md');
+      const actMount = document.getElementById('activities-md');
+      if (pubMount) loadMarkdown('publications.md', pubMount, enhanceRecords);
+      if (actMount) loadMarkdown('activities.md',   actMount,   enhanceRecords);
+    });
+  </script>
 </head>
 
-
 <body>
+  <header><h1>Welcome to Qi Zhang's personal website!</h1></header>
 
-    <header>
-        <h1>Welcome to Qi Zhang's personal website!</h1>
-    </header>
+  <main class="container">
+    <!-- Personal Info -->
+    <section class="section personal-info">
+      <h2 class="section-heading">Personal Information</h2>
+      <ul class="list">
+        <li class="list-item"><strong>Name</strong> Qi Zhang (张琦)</li>
+        <li class="list-item"><strong>Date of Birth</strong> October, 1994</li>
+        <li class="list-item"><strong>Email</strong>
+          <a href="mailto:zhangqi949494@gmail.com">zhangqi949494@gmail.com</a>,&nbsp;
+          <a href="mailto:zhangqi94@iphy.ac.cn">zhangqi94@iphy.ac.cn</a>
+        </li>
+        <li class="list-item"><strong>Github</strong> <a href="https://github.com/zhangqi94">github.com/zhangqi94</a></li>
+        <li class="list-item"><strong>ORCID</strong> <a href="https://orcid.org/0000-0002-1243-344X">0000-0002-1243-344X</a></li>
+        <li class="list-item"><strong>Google Scholar</strong> <a href="https://scholar.google.com/citations?user=P0Dh0aAAAAAJ&hl=en">https://scholar.google.com/citations?user=P0Dh0aAAAAAJ&hl=en</a></li>
+      </ul>
+    </section>
 
-    <div class="section personal-info">
-        <h2 class="section-heading">Personal Information</h2>
-        <ul class="list">
-            <li class="list-item">
-                <strong>Name</strong> Qi Zhang (张琦)
-            </li>
-            <li class="list-item">
-                <strong>DOB</strong> October, 1994
-            </li>
-            <li class="list-item">
-                <strong>Email</strong> 
-                <a href="mailto:zhangqi949494@gmail.com">zhangqi949494@gmail.com</a>,&nbsp;
-                <a href="mailto:zhangqi94@iphy.ac.cn">zhangqi94@iphy.ac.cn</a>,&nbsp;
-            </li>
-            <li class="list-item">
-                <strong>Github</strong> 
-                <a href="https://github.com/zhangqi94">https://github.com/zhangqi94</a>
-            </li>
-            <li class="list-item">
-                <strong>ORCID</strong> 
-                <a href="https://orcid.org/0000-0002-1243-344X">https://orcid.org/0000-0002-1243-344X</a>
-            </li>
-        </ul>
-    </div>
+    <!-- Education -->
+    <section class="section academic-education">
+      <h2 class="section-heading">Academic & Education</h2>
+      <ul class="list">
+        <li class="list-itemedu"><span class="date">2023.5–Today</span> <b>Postdoctor</b>, Institute of Physics, Chinese Academy of Sciences</li>
+        <li class="list-itemedu2"><span class="date"></span>Supervisor: Prof. Lei Wang (王磊)</li>
+        <li class="list-itemedu"><span class="date">2017.9–2022.6</span> <b>Ph.D. in Physics</b>, Department of Physics, Tsinghua University</li>
+        <li class="list-itemedu2"><span class="date"></span>Supervisor: Prof. Guang-Ming Zhang (张广铭)</li>
+        <li class="list-itemedu"><span class="date">2013.9–2017.6</span> <b>B.S. in Physics</b>, School of Physics and Technology, Wuhan University</li>
+      </ul>
+    </section>
 
-    <div class="section academic-education">
-        <h2 class="section-heading">Academic & Education</h2>
-        <ul>
-            <li class="list-itemedu">
-                <span class="date">2023.5-Today</span> 
-                <b>Postdoctor</b>,
-                Institute of Physics, Chinese Academy of Sciences
-            </li>
-            <li class="list-itemedu2">
-                <span class="date"> </span> 
-                Supervisor: Prof. Lei Wang (王磊)
-            </li>
+    <!-- Interests -->
+    <section class="section interests">
+      <h2 class="section-heading">Interests</h2>
+      <ul class="list">
+        <li class="list-interests"><b>1. Machine learning and quantum many-body physics:</b></li>
+        <li class="list-interests-item">Anharmonic vibrational properties in molecules and solids.</li>
+        <li class="list-interests"><b>2. Tensor networks and topological states:</b></li>
+        <li class="list-interests-item">Intrinsic topological states, topological phase transitions, non-Hermitian systems.</li>
+      </ul>
+    </section>
 
-            <li class="list-itemedu">
-                <span class="date">2017.9-2022.6</span> 
-                <b>Ph.D. in Physics</b>,  
-                Department of Physics, Tsinghua University
-            </li>
-            <li class="list-itemedu2">
-                <span class="date"> </span> 
-                Supervisor: Prof. Guang-Ming Zhang (张广铭)
-            </li>
+    <!-- Publications (Markdown 注入) -->
+    <section class="section articles">
+      <h2 class="section-heading">Publications</h2>
+      <div id="publications-md"><span class="loading">Loading publications…</span></div>
+    </section>
 
-            <li class="list-itemedu">
-                <span class="date">2013.9-2017.6</span> 
-                <b>B.S. in Physics</b>, 
-                School of Physics and Technology, Wuhan University
-            </li>
-        </ul>
-    </div>
+    <!-- Academic Activities (Markdown 注入) -->
+    <section class="section">
+      <h2 class="section-heading">Academic Activities</h2>
+      <div id="activities-md"><span class="loading">Loading activities…</span></div>
+    </section>
+  </main>
 
-    <div class="section interests">
-        <h2 class="section-heading">Interests</h2>
-        <ul class="list">
-            <li class="list-interests"> <b>1. Machine learning and many-body physics:</b></li>
-            <li class="list-interests-item"> Anharmonic vibrational properties in molecules and solids.</li>
-            <li class="list-interests"><b>2. Tensor networks and Topological states:</b></li>
-            <li class="list-interests-item">Intrinsic topoligical states, topological phase transitions, non-Hermitian systems.</li>
-            <!-- <li class="list-interests"><b>3. Random quantum circuits and quantum computings:</b></li>
-            <li class="list-interests-item">Entanglement phase transitions.</li> -->
-        </ul>
-    </div>
-
-    <!-- Secoundary section: Publications -->
-    <div class="section articles">
-        <h2 class="section-heading">Publications</h2>
-        <div class="article">
-
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2509.23731" target="_blank">arXiv: 2509.23731</a>
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Neural Canonical Transformation for the Spectra of Fluxional Molecule CH5+</strong>
-                </ul>
-                <ul class="article-authors">
-                    Ruisi Wang, <strong>Qi Zhang</strong>, Lei Wang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Chemical Physics (physics.chem-ph); Computational Physics (physics.comp-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://arxiv.org/abs/2509.23731" target="_blank">arXiv preprint arXiv:2509.23731 (2025)</a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://arxiv.org/abs/2509.23731" target="_blank">https://arxiv.org/abs/2509.23731</a>
-                </ul>
-                <ul class="article-item">
-                    Date: 28 Sep 2025
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2508.08376" target="_blank">arXiv: 2508.08376</a>
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Continuous topological phase transition between Z2 topologically ordered phases </strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Wen-Tao Xu
-                </ul>
-                <ul class="article-item">
-                    Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech); Quantum Physics (quant-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://doi.org/10.48550/arXiv.2508.08376" target="_blank"> https://doi.org/10.48550/arXiv.2508.08376 </a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.48550/arXiv.2508.08376" target="_blank"> https://doi.org/10.48550/arXiv.2508.08376 </a>
-                </ul>
-                <ul class="article-item">
-                    Date: Mon, 11 Aug 2025
-                </ul>
-            </ul>
-
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2507.01452" target="_blank">arXiv: 2507.01452</a>
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Quantum Anharmonic Effects in Hydrogen-Bond Symmetrization of High-Pressure Ice </strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Lei Wang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Materials Science (cond-mat.mtrl-sci); Computational Physics (physics.comp-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://doi.org/10.48550/arXiv.2507.01452" target="_blank"> https://doi.org/10.48550/arXiv.2507.01452 </a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.48550/arXiv.2507.01452" target="_blank"> https://doi.org/10.48550/arXiv.2507.01452 </a>
-                </ul>
-                <ul class="article-item">
-                    Date: Wed, 2 Jul 2025
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2412.12451" target="_blank">arXiv: 2412.12451</a>
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Neural Canonical Transformations for Quantum Anharmonic Solids of Lithium </strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Xiaoyang Wang, Rong Shi, Xinguo Ren, Han Wang, Lei Wang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Materials Science (cond-mat.mtrl-sci); Computational Physics (physics.comp-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://journals.aps.org/prl/abstract/10.1103/p3th-25bc" target="_blank"> Phys. Rev. Lett. 134, 246101 </a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.1103/p3th-25bc" target="_blank"> https://doi.org/10.1103/p3th-25bc </a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 26 December 2024; accepted 27 May 2025; published 20 June 2025
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2403.12518" target="_blank">arXiv: 2403.12518</a>
-                <!--[<a href="https://arxiv.org/pdf/2403.12518.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Neural canonical transformations for vibrational spectra of molecules</strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Rui-Si Wang, Lei Wang 
-                </ul>
-                <ul class="article-item">
-                    Subjects: Chemical Physics (physics.chem-ph); Computational Physics (physics.comp-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://doi.org/10.1063/5.0209255" target="_blank">J. Chem. Phys. 161, 024103 (2024)</a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.1063/5.0209255" target="_blank">https://doi.org/10.1063/5.0209255</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Submitted: 20 March 2024; Accepted: 19 June 2024
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2203.07791" target="_blank">arXiv: 2203.07791</a>
-                <!--[<a href="https://arxiv.org/pdf/2203.07791.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Noise-Induced Entanglement Transition in One-Dimensional Random Quantum Circuits</strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Quantum Physics (quant-ph); Disordered Systems and Neural Networks (cond-mat.dis-nn); Statistical Mechanics (cond-mat.stat-mech)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://cpl.iphy.ac.cn/article/doi/10.1088/0256-307X/39/5/050302" target="_blank">Chinese Physical Letters 39, 050302 (2022)</a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.1088/0256-307X/39/5/050302" target="_blank">https://doi.org/10.1088/0256-307X/39/5/050302</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 4 March 2022; Accepted 2 April 2022; Published online 26 April 2022
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/2005.03841" target="_blank">arXiv: 2005.03841</a>
-                <!--[<a href="https://arxiv.org/pdf/2005.03841.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Non-Hermitian effects of the intrinsic signs in topologically ordered wavefunctions</strong>
-                </ul>
-                <ul class="article-authors">
-                    <strong>Qi Zhang</strong>, Wen-Tao Xu, Zi-Qi Wang, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech); Quantum Physics (quant-ph)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://www.nature.com/articles/s42005-020-00479-y" target="_blank">Commun Phys 3, 209 (2020)</a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.1038/s42005-020-00479-y" target="_blank">https://doi.org/10.1038/s42005-020-00479-y</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 20 July 2020; Accepted 21 October 2020; Published online 13 November 2020
-                </ul>
-            </ul>
-
-            <!-------------------------------------------------------------------------------------------->
-            <!-------------------------------------------------------------------------------------------->
-            <h3 class="article-heading">
-                <a href="https://arxiv.org/abs/1912.07836" target="_blank">arXiv: 1912.07836</a>
-                <!--[<a href="https://arxiv.org/pdf/1912.07836.pdf" target="_blank">PDF</a>]-->
-            </h3>
-            <ul class="article-list">
-                <ul class="article-title">
-                    <strong>Tensor network approach to phase transitions of a non-Abelian topological phase</strong>
-                </ul>
-                <ul class="article-authors">
-                    Wen-Tao Xu, <strong>Qi Zhang</strong>, Guang-Ming Zhang
-                </ul>
-                <ul class="article-item">
-                    Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech)
-                </ul>
-                <ul class="article-item">
-                    Journal: <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.124.130603" target="_blank">Phys. Rev. Lett. 124, 130603 (2020)</a>
-                </ul>
-                <ul class="article-item">
-                    DOI: <a href="https://doi.org/10.1103/PhysRevLett.124.130603" target="_blank">https://doi.org/10.1103/PhysRevLett.124.130603</a>
-                </ul>
-                <ul class="article-item">
-                    Date: Received 19 December 2019; Accepted 20 March 2020; Published 3 April 2020
-                </ul>
-            </ul>
-
-        </div>
-    </div>
-
-<!-- ==================== Academic Activities ==================== -->
-<h2 class="section-heading">Academic Activities</h2>
-
-<h3 class="activity-heading">[1] International Conference on Quantum Monte Carlo and Fermion Sign Problem</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Oct. 2025, Hubei Polytechnic University, Huangshi, China</ul>
-    <ul class="activity-item">Talk: Neural canonical transformations</ul>
-</ul>
-
-<h3 class="activity-heading">[2] Chinese Physical Society Fall Meeting</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Sep. 2025, Harbin Engineering University, Harbin, China</ul>
-    <ul class="activity-item">Talk: Neural Canonical Transformations</ul>
-</ul>
-
-<h3 class="activity-heading">[3] 2025 Materials Physics Interdisciplinary Forum</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Apr. 2025, Suzhou Institute for Advanced Research, University of Science and Technology of China, Suzhou, China</ul>
-    <ul class="activity-item">Talk: Neural canonical transformations for Quantum Anharmonic Systems</ul>
-</ul>
-
-<h3 class="activity-heading">[4] The 13th Workshop on Quantum Many-Body Computation</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Apr. 2025, Westlake University, Hangzhou, China</ul>
-    <ul class="activity-item">Poster: Neural Canonical Transformations for Quantum Anharmonic Systems</ul>
-</ul>
-
-<h3 class="activity-heading">[5] 2024 AI Material Science Conference</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Dec. 2024, Suzhou Institute for Advanced Research, University of Science and Technology of China, Suzhou, China</ul>
-    <ul class="activity-item">Talk: Neural Canonical Transformations for Quantum Anharmonic Systems</ul>
-</ul>
-
-<h3 class="activity-heading">[6] Scientific Computing Training Camp</h3>
-<ul class="activity-list">
-    <ul class="activity-item">May. 2024, Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China</ul>
-    <ul class="activity-item">Talk: Flow model for computational physics</ul>
-</ul>
-
-<h3 class="activity-heading">[7] The 12th Workshop on Quantum Many-Body Computation</h3>
-<ul class="activity-list">
-    <ul class="activity-item">Apr. 2024, Northwest University, Xi'an, China</ul>
-    <ul class="activity-item">Poster: Neural canonical transformations for vibrational spectra of molecules</ul>
-</ul>
-
-<!-- ==================== Style ==================== -->
-<style>
-.activity-heading {
-    margin: 0;
-    font-size: 16px;
-    margin-bottom: 5px;
-    margin-top: 20px;
-}
-
-.activity-list {
-    font-size: 14px;
-    padding-left: 40px; /* 与 article-list 一致的缩进 */
-    margin: 0;
-    margin-bottom: 3px;
-}
-
-.activity-item {
-    font-size: 14px;
-    padding-left: 0px;
-    margin-bottom: 3px;
-}
-</style>
-
-    <br><br><br> 
-    <footer>
-        <p>&copy; 2025 Qi Zhang. All rights reserved.</p>
-    </footer>
+  <footer><p>&copy; 2025 Qi Zhang. All rights reserved.</p></footer>
 </body>
 </html>
-
