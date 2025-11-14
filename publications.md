@@ -13,7 +13,7 @@
 - Journal: https://doi.org/10.48550/arXiv.2508.08376
 - DOI: https://doi.org/10.48550/arXiv.2508.08376
 - Date: Mon, 11 Aug 2025
-- Repository: https://github.com/zhangqi94/z4quantumdouble
+- Repository: https://github.com/zhangqi94/z4quantumdouble, https://zenodo.org/records/16748849
 
 ### [arXiv: 2507.01452](https://arxiv.org/abs/2507.01452)
 - **Quantum Anharmonic Effects in Hydrogen-Bond Symmetrization of High-Pressure Ice**
@@ -22,7 +22,7 @@
 - Journal: [Phys. Rev. B 112, 174106 (2025)](https://journals.aps.org/prb/abstract/10.1103/gsc3-1bz6)
 - DOI: https://doi.org/10.1103/gsc3-1bz6
 - Date: Received 5 July 2025; revised 16 September 2025; accepted 14 October 2025; published 4 November 2025
-- Repository: https://github.com/zhangqi94/watericex
+- Repository: https://github.com/zhangqi94/watericex  
 
 ### [arXiv: 2412.12451](https://arxiv.org/abs/2412.12451)
 - **Neural Canonical Transformations for Quantum Anharmonic Solids of Lithium**
