@@ -10,9 +10,9 @@
 - **Continuous topological phase transition between Z2 topologically ordered phases**
 - Authors: **Qi Zhang**, Wen-Tao Xu
 - Subjects: Strongly Correlated Electrons (cond-mat.str-el); Statistical Mechanics (cond-mat.stat-mech); Quantum Physics (quant-ph)
-- Journal: https://doi.org/10.48550/arXiv.2508.08376
-- DOI: https://doi.org/10.48550/arXiv.2508.08376
-- Date: Mon, 11 Aug 2025
+- Journal: [Phys. Rev. B 112, L241107 (2025)](https://journals.aps.org/prb/abstract/10.1103/1bjs-mf2l)
+- DOI: https://doi.org/10.1103/1bjs-mf2l
+- Date: Received 16 August 2025; revised 30 October 2025; accepted 12 November 2025; published 8 December 2025
 - Repository: https://github.com/zhangqi94/z4quantumdouble, https://zenodo.org/records/16748849
 
 ### [arXiv: 2507.01452](https://arxiv.org/abs/2507.01452)
