@@ -1,9 +1,17 @@
+### [arXiv:2603.09247](https://arxiv.org/abs/2603.09247)
+- **Ab initio simulation of the first-order proton-ordering transition in water ice**
+- Authors: **Qi Zhang**, Sicong Wan, Lei Wang
+- Subjects: Materials Science (cond-mat.mtrl-sci); Computational Physics (physics.comp-ph)
+- Journal: [arXiv preprint arXiv:2603.09247 (2026)](https://arxiv.org/abs/2603.09247)
+- DOI: https://doi.org/10.48550/arXiv.2603.09247
+- Date: 10 Mar 2026
+
 ### [arXiv:2509.23731](https://arxiv.org/abs/2509.23731)
 - **Neural Canonical Transformation for the Spectra of Fluxional Molecule CH5+**
 - Authors: Ruisi Wang, **Qi Zhang**, Lei Wang
 - Subjects: Chemical Physics (physics.chem-ph); Computational Physics (physics.comp-ph)
 - Journal: [arXiv preprint arXiv:2509.23731 (2025)](https://arxiv.org/abs/2509.23731)
-- DOI: https://arxiv.org/abs/2509.23731
+- DOI: https://doi.org/10.48550/arXiv.2509.23731
 - Date: 28 Sep 2025
 
 ### [arXiv: 2508.08376](https://arxiv.org/abs/2508.08376)
