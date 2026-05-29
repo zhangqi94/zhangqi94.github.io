@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===== Meta / SEO ===== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Qi Zhang — Personal Website</title>
+  <meta name="description" content="Qi Zhang — Machine learning & many-body physics. Publications and contact." />
+  <link rel="canonical" href="https://your-domain.example/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#ffffff" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Qi Zhang — Personal Website" />
+  <meta property="og:description" content="Machine learning & many-body physics. Publications and contact." />
+  <meta property="og:url" content="https://your-domain.example/" />
+  <meta property="og:image" content="https://your-domain.example/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Qi Zhang — Personal Website" />
+  <meta name="twitter:description" content="Machine learning & many-body physics. Publications and contact." />
+  <meta name="twitter:image" content="https://your-domain.example/og-image.jpg" />
+
+  <!-- Icons (替换为你自己的文件) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Qi Zhang",
+    "alternateName": "张琦",
+    "url": "https://your-domain.example/",
+    "sameAs": [
+      "https://github.com/zhangqi94",
+      "https://orcid.org/0000-0002-1243-344X",
+      "mailto:zhangqi949494@gmail.com",
+      "mailto:zhangqi94@iphy.ac.cn"
+    ],
+    "jobTitle": "Postdoctoral Researcher",
+    "affiliation": { "@type": "Organization", "name": "Institute of Physics, Chinese Academy of Sciences" }
+  }
+  </script>
+
+  <!-- ===== Styles ===== -->
+  <style>
+    :root{
+      --text: #222;
+      --muted: #666;
+      --bg-soft: #f5f5f5;
+      --link: #0a58ca;
+      --maxw: 860px;
+      --indent: 36px;        /* 从第二行起统一缩进（pub/act 通用） */
+      --title-size: 21px;    /* 每条记录的“文章/活动标题”字号（pub/act 一致） */
+      --body-size: 16px;     /* 正文字号（作者/信息/活动条目） */
+      --line: 1.35;          /* 稍微大一点的行距 */
+    }
+
+    /* 基础排版 */
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+    .container{ max-width: var(--maxw); margin: 24px auto 48px; padding: 0 16px; }
+
+    header, footer { text-align: center; background: var(--bg-soft); }
+    header{ padding: 10px 0; }
+    header h1{ margin: 0; font-size: 20px; font-weight: 600; }
+    footer{ padding: 8px 0; font-size: 14px; color: var(--muted); }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .section{ margin: 28px 0; }
+    .section-heading{ font-size: 24px; margin: 0 0 12px 0; color: #333; font-weight: 700; }
+
+    /* Personal Info / Education 行内对齐 */
+    .list{ margin: 0; padding-left: var(--indent); list-style: none; }
+    .list-item, .list-itemedu { display: flex; align-items: baseline; margin: 6px 0; }
+    .list-item strong{ width: 120px; margin-right: 16px; font-weight: 600; }
+    .list-itemedu2{ display: flex; align-items: baseline; margin: 2px 0 6px; }
+    .date{ width: 120px; margin-right: 16px; color: var(--muted); }
+
+    /* Interests：不要圆点，整体统一缩进（不是两列） */
+    .section.interests ul.list{ list-style: none; margin: 0; padding-left: var(--indent); }
+    .section.interests .list-interests,
+    .section.interests .list-interests-item{ margin: 4px 0; }
+    .section.interests .list-interests b{
+      font-weight: 600;
+      font-size: 18px; /* 增大 1 和 2 的行字号 */
+    }
+
+    /* Publications & Activities：共享风格（内容字号一致、行距一致、缩进一致） */
+    /* 去掉 bullets 与默认缩进 */
+    .records ul, .records li{ list-style: none; padding-left: 0; margin-left: 0; }
+
+    /* 每条记录的第 1 行（h3）：不缩进、作为编号行（arXiv 或活动名） */
+    .records h3.record-heading{
+      font-size: 16px;
+      font-weight: 600;
+      margin: 18px 0 4px 0;      /* 与标题间更紧凑 */
+      line-height: 1.25;
+    }
+
+    /* 从第 2 行起统一缩进：h3 紧邻的第一个 UL */
+    .records h3.record-heading + ul{ padding-left: var(--indent); }
+
+    /* 第二行（论文题目放大，仅用于 Publications） */
+    .section.articles .records h3.record-heading + ul > :is(ul,li):first-child,
+    #publications-md h3.record-heading + ul > :is(ul,li):first-child{
+      font-size: var(--title-size) !important;
+      font-weight: 600 !important;
+      margin: 0 0 4px 0 !important;
+      line-height: var(--line) !important;
+      padding-left: 0 !important;
+    }
+
+    /* 标题内部元素跟随放大 */
+    .section.articles .records h3.record-heading + ul > :is(ul,li):first-child *,
+    #publications-md h3.record-heading + ul > :is(ul,li):first-child *{
+      font-size: inherit !important;
+      font-weight: inherit !important;
+    }
+
+    /* 作者行 / 正文条目（Journal/DOI/Date/活动明细） */
+    .records .record-authors,
+    .records .record-item{
+      font-size: var(--body-size);
+      margin: 0 0 4px 0;
+      line-height: var(--line);
+    }
+
+    /* 加载/错误提示 */
+    .loading, .error { font-size: 14px; color: var(--muted); }
+    .error{ color: #b00; }
+  </style>
+
+  <!-- Markdown 渲染器 -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+
+  <!-- 注入 publications.md，自动编号、套样式 -->
+  <script defer>
+    async function loadMarkdown(mdPath, mountEl, postprocess) {
+      try {
+        const res = await fetch(mdPath + '?v=' + Date.now());
+        if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+        const md = await res.text();
+        mountEl.innerHTML = marked.parse(md, { mangle: false, headerIds: false });
+        if (typeof postprocess === 'function') postprocess(mountEl);
+      } catch (err) {
+        mountEl.innerHTML = '<span class="error">Failed to load ' + mdPath + ': ' + String(err) + '</span>';
+      }
+    }
+
+    // 公共：给 h3 自动编号 + 添加类名（Pub/Act 通用）
+    // 公共：给 h3 自动编号 + 保留链接（Pub/Act 通用）
+    function enhanceRecords(root){
+        const hs = root.querySelectorAll('h3');
+        hs.forEach((h, i) => {
+
+        // 避免重复编号
+        if (!h.dataset.numbered) {
+            const span = document.createElement('span');
+            span.textContent = `[${i + 1}] `;
+            h.prepend(span);     // ✅ 不修改原来的 innerHTML，因此链接保留
+            h.dataset.numbered = "1";
+        }
+
+        h.classList.add('record-heading');
+        });
+
+        root.classList.add('records');
+
+        // 作者 / 条目识别（与之前一致）
+        root.querySelectorAll('ul').forEach(ul => {
+        const txt = ul.textContent.trim().toLowerCase();
+        if ((/authors?:/.test(txt) || /,|\sand\s/.test(txt)) && !/^(journal:|doi:|date:|subjects:)/.test(txt)) {
+            ul.classList.add('record-authors');
+        }
+        if (/^(journal:|doi:|date:|subjects:)/.test(txt)) {
+            ul.classList.add('record-item');
+        }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const pubMount = document.getElementById('publications-md');
+      if (pubMount) loadMarkdown('publications.md', pubMount, enhanceRecords);
+    });
+  </script>
+</head>
+
+<body>
+  <header><h1>Welcome to Qi Zhang's personal website!</h1></header>
+
+  <main class="container">
+    <!-- Personal Info -->
+    <section class="section personal-info">
+      <h2 class="section-heading">Personal Information</h2>
+      <ul class="list">
+        <li class="list-item"><strong>Name</strong> Qi Zhang (张琦)</li>
+        <li class="list-item"><strong>Date of Birth</strong> October, 1994</li>
+        <li class="list-item"><strong>Email</strong>
+          <a href="mailto:zhangqi949494@gmail.com">zhangqi949494@gmail.com</a>,&nbsp;
+          <a href="mailto:zhangqi94@iphy.ac.cn">zhangqi94@iphy.ac.cn</a>
+        </li>
+        <li class="list-item"><strong>Github</strong> <a href="https://github.com/zhangqi94">github.com/zhangqi94</a></li>
+        <li class="list-item"><strong>Blog</strong> <a href="https://blog.8950509.xyz/">blog.8950509.xyz</a></li>
+        <li class="list-item"><strong>ORCID</strong> <a href="https://orcid.org/0000-0002-1243-344X">0000-0002-1243-344X</a></li>
+        <li class="list-item"><strong>Google Scholar</strong> <a href="https://scholar.google.com/citations?user=P0Dh0aAAAAAJ&hl=en">https://scholar.google.com/citations?user=P0Dh0aAAAAAJ&hl=en</a></li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="section academic-education">
+      <h2 class="section-heading">Academic & Education</h2>
+      <ul class="list">
+        <li class="list-itemedu"><span class="date">2023.5–Today</span> <b>Postdoctor</b>, Institute of Physics, Chinese Academy of Sciences</li>
+        <li class="list-itemedu2"><span class="date"></span>Supervisor: Prof. Lei Wang (王磊)</li>
+        <li class="list-itemedu"><span class="date">2017.9–2022.6</span> <b>Ph.D. in Physics</b>, Department of Physics, Tsinghua University</li>
+        <li class="list-itemedu2"><span class="date"></span>Supervisor: Prof. Guang-Ming Zhang (张广铭)</li>
+        <li class="list-itemedu"><span class="date">2013.9–2017.6</span> <b>B.S. in Physics</b>, School of Physics and Technology, Wuhan University</li>
+      </ul>
+    </section>
+
+    <!-- Interests -->
+    <section class="section interests">
+      <h2 class="section-heading">Interests</h2>
+      <ul class="list">
+        <li class="list-interests"><b>1. Machine learning and quantum many-body physics:</b></li>
+        <li class="list-interests-item">Anharmonic vibrational properties of molecules and solids; deep generative models.</li>
+        <li class="list-interests"><b>2. Tensor networks and quantum topological states:</b></li>
+        <li class="list-interests-item">Intrinsic topological states, topological phase transitions, tensor network methods.</li>
+      </ul>
+    </section>
+
+    <!-- Publications (Markdown 注入) -->
+    <section class="section articles">
+      <h2 class="section-heading">Publications</h2>
+      <div id="publications-md"><span class="loading">Loading publications…</span></div>
+    </section>
+  </main>
+
+  <footer><p>&copy; 2025 Qi Zhang. All rights reserved.</p></footer>
+</body>
+</html>
