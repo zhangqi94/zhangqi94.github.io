@@ -51,52 +51,169 @@
   <!-- ===== Styles ===== -->
   <style>
     :root{
-      --text: #222;
-      --muted: #666;
-      --bg-soft: #f5f5f5;
-      --link: #0a58ca;
-      --maxw: 860px;
-      --indent: 36px;        /* 从第二行起统一缩进（pub/act 通用） */
-      --title-size: 21px;    /* 每条记录的“文章/活动标题”字号（pub/act 一致） */
-      --body-size: 16px;     /* 正文字号（作者/信息/活动条目） */
-      --line: 1.35;          /* 稍微大一点的行距 */
+      --text: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --muted: #6b7280;
+      --bg-page: #fafafa;
+      --bg-card: #ffffff;
+      --bg-header: #f8f9fa;
+      --border: #e5e7eb;
+      --border-light: #f3f4f6;
+      --link: #2563eb;
+      --link-hover: #1d4ed8;
+      --accent: #3b82f6;
+      --maxw: 900px;
+      --indent: 36px;
+      --title-size: 21px;
+      --body-size: 16px;
+      --line: 1.6;
+      --radius: 8px;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
     }
 
     /* 基础排版 */
     html, body { height: 100%; }
     body{
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Arial, sans-serif;
       color: var(--text);
-      background: #fff;
+      background: var(--bg-page);
+      line-height: var(--line);
     }
-    .container{ max-width: var(--maxw); margin: 24px auto 48px; padding: 0 16px; }
+    .container{
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
 
-    header, footer { text-align: center; background: var(--bg-soft); }
-    header{ padding: 10px 0; }
-    header h1{ margin: 0; font-size: 20px; font-weight: 600; }
-    footer{ padding: 8px 0; font-size: 14px; color: var(--muted); }
+    /* Header 优化 */
+    header {
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 0;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    header h1{
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
 
-    a{ color: var(--link); text-decoration: none; }
-    a:hover{ text-decoration: underline; }
+    /* Footer 优化 */
+    footer{
+      text-align: center;
+      padding: 24px 0;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: var(--bg-header);
+      margin-top: 60px;
+    }
 
-    .section{ margin: 28px 0; }
-    .section-heading{ font-size: 24px; margin: 0 0 12px 0; color: #333; font-weight: 700; }
+    /* 链接样式 */
+    a{
+      color: var(--link);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover{
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    /* Section 卡片化 */
+    .section{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin: 24px 0;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.3s ease;
+    }
+    .section:hover{
+      box-shadow: var(--shadow-md);
+    }
+    .section-heading{
+      font-size: 22px;
+      margin: 0 0 20px 0;
+      color: var(--text);
+      font-weight: 700;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-light);
+    }
 
     /* Personal Info / Education 行内对齐 */
-    .list{ margin: 0; padding-left: var(--indent); list-style: none; }
-    .list-item, .list-itemedu { display: flex; align-items: baseline; margin: 6px 0; }
-    .list-item strong{ width: 120px; margin-right: 16px; font-weight: 600; }
-    .list-itemedu2{ display: flex; align-items: baseline; margin: 2px 0 6px; }
-    .date{ width: 120px; margin-right: 16px; color: var(--muted); }
+    .list{
+      margin: 0;
+      padding-left: var(--indent);
+      list-style: none;
+    }
+    .list-item, .list-itemedu {
+      display: flex;
+      align-items: baseline;
+      margin: 6px 0;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .list-item:last-child, .list-itemedu:last-child {
+      border-bottom: none;
+    }
+    .list-item strong{
+      width: 140px;
+      margin-right: 20px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+    .list-itemedu2{
+      display: flex;
+      align-items: baseline;
+      margin: 2px 0 6px;
+      padding: 0 0 4px 0;
+      color: var(--muted);
+      font-size: 15px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .list-itemedu2:last-child {
+      border-bottom: none;
+    }
+    .date{
+      width: 140px;
+      margin-right: 20px;
+      color: var(--muted);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .list-itemedu b {
+      color: var(--text);
+      font-weight: 600;
+    }
 
     /* Interests：不要圆点，整体统一缩进（不是两列） */
-    .section.interests ul.list{ list-style: none; margin: 0; padding-left: var(--indent); }
+    .section.interests ul.list{
+      list-style: none;
+      margin: 0;
+      padding-left: var(--indent);
+    }
     .section.interests .list-interests,
-    .section.interests .list-interests-item{ margin: 4px 0; }
+    .section.interests .list-interests-item{
+      margin: 6px 0;
+      line-height: 1.5;
+    }
     .section.interests .list-interests b{
       font-weight: 600;
-      font-size: 18px; /* 增大 1 和 2 的行字号 */
+      font-size: 17px;
+      color: var(--text);
+    }
+    .section.interests .list-interests-item {
+      color: var(--text-secondary);
+      padding-left: 20px;
+      margin-top: 3px;
     }
 
     /* Publications & Activities：共享风格（内容字号一致、行距一致、缩进一致） */
@@ -107,8 +224,15 @@
     .records h3.record-heading{
       font-size: 16px;
       font-weight: 600;
-      margin: 18px 0 4px 0;      /* 与标题间更紧凑 */
-      line-height: 1.25;
+      margin: 24px 0 8px 0;
+      line-height: 1.4;
+      color: var(--accent);
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+    .records h3.record-heading:first-child {
+      border-top: none;
+      padding-top: 0;
     }
 
     /* 从第 2 行起统一缩进：h3 紧邻的第一个 UL */
@@ -119,9 +243,10 @@
     #publications-md h3.record-heading + ul > :is(ul,li):first-child{
       font-size: var(--title-size) !important;
       font-weight: 600 !important;
-      margin: 0 0 4px 0 !important;
-      line-height: var(--line) !important;
+      margin: 0 0 8px 0 !important;
+      line-height: 1.5 !important;
       padding-left: 0 !important;
+      color: var(--text) !important;
     }
 
     /* 标题内部元素跟随放大 */
@@ -135,13 +260,37 @@
     .records .record-authors,
     .records .record-item{
       font-size: var(--body-size);
-      margin: 0 0 4px 0;
+      margin: 6px 0;
       line-height: var(--line);
+      color: var(--text-secondary);
     }
 
     /* 加载/错误提示 */
-    .loading, .error { font-size: 14px; color: var(--muted); }
-    .error{ color: #b00; }
+    .loading, .error {
+      font-size: 15px;
+      color: var(--muted);
+      padding: 20px;
+      text-align: center;
+      background: var(--border-light);
+      border-radius: 4px;
+    }
+    .error{
+      color: #dc2626;
+      background: #fee;
+    }
+
+    /* 响应式优化 */
+    @media (max-width: 768px) {
+      .container { padding: 0 16px 40px; }
+      header { padding: 24px 0; }
+      header h1 { font-size: 24px; }
+      .section { padding: 24px 20px; margin: 16px 0; }
+      .section-heading { font-size: 20px; }
+      .list-item, .list-itemedu { flex-direction: column; align-items: flex-start; }
+      .list-item strong, .date { width: auto; margin-bottom: 4px; }
+      .list-itemedu2 { padding-left: 0; }
+      .records h3.record-heading + ul { padding-left: 20px; }
+    }
   </style>
 
   <!-- Markdown 渲染器 -->
@@ -200,7 +349,9 @@
 </head>
 
 <body>
-  <header><h1>Welcome to Qi Zhang's personal website!</h1></header>
+  <header>
+    <h1>Welcome to Qi Zhang's Homepage!</h1>
+  </header>
 
   <main class="container">
     <!-- Personal Info -->
@@ -250,6 +401,6 @@
     </section>
   </main>
 
-  <footer><p>&copy; 2025 Qi Zhang. All rights reserved.</p></footer>
+  <footer><p>&copy; 2026 Qi Zhang. All rights reserved.</p></footer>
 </body>
 </html>
