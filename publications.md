@@ -5,6 +5,7 @@
 - Journal: [arXiv preprint arXiv:2603.09247 (2026)](https://arxiv.org/abs/2603.09247)
 - DOI: https://doi.org/10.48550/arXiv.2603.09247
 - Date: 10 Mar 2026
+- Repository: https://github.com/zhangqi94/watericeIh
 
 ### [arXiv:2509.23731](https://arxiv.org/abs/2509.23731)
 - **Neural Canonical Transformation for the Spectra of Fluxional Molecule CH5+**
